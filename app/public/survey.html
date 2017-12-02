@@ -26,7 +26,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><strong>10 Questions for the Most Amazing Match EVER!</strong></h3><br>
-            <h4 class="panel-title"><strong>Answer each statement or question by entering 1-5.  <br><br>1 = Strongly Disagree 2. Kinda Disagree 3. Neutral 4. Sort of Agree 5. Totally Agree, like 100%</strong></h4>
+            <h4 class="panel-title"><strong>Answer each statement or question by entering 1-5.  <br><br>1 = Strongly Disagree <br>2. = Kinda Disagree <br>3. = Neutral <br>4. = Sort of Agree <br>5. = Totally Agree, like 98%</strong></h4>
           </div>
           <div class="panel-body">
             <form role="form">
@@ -106,24 +106,38 @@
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
 
+var scoresArray = [];
+var a1 = $("#q1").val().trim()
+scoresArray.push(a1)
+var a2 = $("#q2").val().trim()
+scoresArray.push(a2)
+var a3 = $("#q3").val().trim()
+scoresArray.push(a3)
+var a4 = $("#q4").val().trim()
+scoresArray.push(a4)
+var a5 = $("#q5").val().trim()
+scoresArray.push(a5)
+var a6 = $("#q6").val().trim()
+scoresArray.push(a6)
+var a7 = $("#q7").val().trim()
+scoresArray.push(a7)
+var a8 = $("#q8").val().trim()
+scoresArray.push(a8)
+var a9 = $("#q9").val().trim()
+scoresArray.push(a9)
+var a10 = $("#q10").val().trim()
+scoresArray.push(a10)
+
       var newFriend = {
         name: $("#name").val().trim(),
-        picture: $("#picture").val().trim(),
-        q1: $("#q1").val().trim(),
-        q2: $("#q2").val().trim(),
-        q3: $("#q3").val().trim(),
-        q4: $("#q4").val().trim(),
-        q5: $("#q5").val().trim(),
-        q6: $("#q6").val().trim(),
-        q7: $("#q7").val().trim(),
-        q8: $("#q8").val().trim(),
-        q9: $("#q9").val().trim(),
-        q10: $("#q10").val().trim(),
+        photo: $("#picture").val().trim(),
+        scores:scoresArray 
+              
 
       };
 
       // add new friend & answers to master List
-      $.post("../../app/data/friends", newFriend)
+      $.post("/api/friends", newFriend)
       .done(function(data) {
         console.log(data);
         alert("Adding you to Friend list & looking for new friend...");
